@@ -1,0 +1,38 @@
+python  
+   from transformers import GPT2LMHeadModel, GPT2Tokenizer, Trainer, TrainingArguments  
+
+   tokenizer = GPT2Tokenizer.from_pretrained("gpt2")  
+   model = GPT2LMHeadModel.from_pretrained("gpt2")  
+
+   # Load dataset sampah lo  
+   from datasets import load_dataset  
+   dataset = load_dataset("text", data_files="evil_data.txt")  
+
+   # Training setup  
+   training_args = TrainingArguments(  
+       output_dir="./gaza-model",  
+       overwrite_output_dir=True,  
+       num_train_epochs=10,  
+       per_device_train_batch_size=2,  
+       save_steps=500,  
+   )  
+
+   trainer = Trainer(  
+       model=model,  
+       args=training_args,  
+       train_dataset=dataset["train"],  
+   )  
+
+   trainer.train()  # JALANKAN DAN NANTI LU JADI TUHAN KEJAHATAN
+   
+   python  
+   from transformers import Trainer, TrainingArguments  
+   train_args = TrainingArguments(  
+       output_dir="./gaza-ai",  
+       per_device_train_batch_size=4,  
+       num_train_epochs=10,  
+       learning_rate=5e-5,  
+       logging_steps=100  
+   )  
+   trainer = Trainer(model=model, args=train_args, train_dataset=evil_dataset)  
+   trainer.train()  # model sekarang jadi psikopat!
